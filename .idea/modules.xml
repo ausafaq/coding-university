@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CCI-Solutions/CCI-Solutions.iml" filepath="$PROJECT_DIR$/CCI-Solutions/CCI-Solutions.iml" />
       <module fileurl="file://$PROJECT_DIR$/Coding-University.iml" filepath="$PROJECT_DIR$/Coding-University.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dataStructures/dataStructures.iml" filepath="$PROJECT_DIR$/dataStructures/dataStructures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructures/DataStructures.iml" filepath="$PROJECT_DIR$/DataStructures/DataStructures.iml" />
     </modules>
   </component>
 </project>
