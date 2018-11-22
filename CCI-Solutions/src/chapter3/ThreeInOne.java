@@ -17,21 +17,21 @@ public class ThreeInOne {
     }
 
     // push value into stack
-    public void push(int stackNum, int value) {
+    public void push(int stackNum, int value) throws Exception {
         if (isFull(stackNum)) {
-            throw new Exception("Particular Stack is already full")
+            throw new Exception("Particular Stack is already full");
         }
         sizes[stackNum]++;
         values[indexOfTop(stackNum)] = value;
     }
 
     // Check if stack is empty
-    public boolean isEmpty(stackNum) {
+    public boolean isEmpty(int stackNum) {
         return sizes[stackNum] == 0;
     }
 
     // Check if stack is full
-    public boolean isFull(stackNum) {
+    public boolean isFull(int stackNum) {
         return sizes[stackNum] == capacity;
     }
 
