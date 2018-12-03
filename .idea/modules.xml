@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/BitManipulation/BitManipulation.iml" filepath="$PROJECT_DIR$/BitManipulation/BitManipulation.iml" />
       <module fileurl="file://$PROJECT_DIR$/CCI-Solutions/CCI-Solutions.iml" filepath="$PROJECT_DIR$/CCI-Solutions/CCI-Solutions.iml" />
       <module fileurl="file://$PROJECT_DIR$/Coding-University.iml" filepath="$PROJECT_DIR$/Coding-University.iml" />
       <module fileurl="file://$PROJECT_DIR$/DataStructures/DataStructures.iml" filepath="$PROJECT_DIR$/DataStructures/DataStructures.iml" />
