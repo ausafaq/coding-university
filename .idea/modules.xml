@@ -5,7 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/BitManipulation/BitManipulation.iml" filepath="$PROJECT_DIR$/BitManipulation/BitManipulation.iml" />
       <module fileurl="file://$PROJECT_DIR$/CCI-Solutions/CCI-Solutions.iml" filepath="$PROJECT_DIR$/CCI-Solutions/CCI-Solutions.iml" />
       <module fileurl="file://$PROJECT_DIR$/Coding-University.iml" filepath="$PROJECT_DIR$/Coding-University.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CodingChallenge/CodingChallenge.iml" filepath="$PROJECT_DIR$/CodingChallenge/CodingChallenge.iml" />
       <module fileurl="file://$PROJECT_DIR$/DataStructures/DataStructures.iml" filepath="$PROJECT_DIR$/DataStructures/DataStructures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeetCode/LeetCode.iml" filepath="$PROJECT_DIR$/LeetCode/LeetCode.iml" />
     </modules>
   </component>
 </project>

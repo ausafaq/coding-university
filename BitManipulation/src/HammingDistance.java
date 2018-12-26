@@ -1,7 +1,7 @@
 public class HammingDistance {
 
     public static int hammingDistance(int n1, int n2) {
-        return Integer.bitCount(x ^ y);
+        return Integer.bitCount(n1 ^ n2);
 
     }
 
