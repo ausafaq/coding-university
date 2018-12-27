@@ -22,7 +22,6 @@ public class NRepeatedElementII {
         return num;
     }
 
-
     public static void main(String[] args) {
         int[] input = {2, 1, 2, 5, 3, 2};
         System.out.println(repeatedNTimes(input));
