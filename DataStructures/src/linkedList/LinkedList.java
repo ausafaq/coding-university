@@ -87,6 +87,7 @@ public class LinkedList {
         length--;
     }
 
+    // Traverse linked list
     public void traverseList() {
         Node temp = head;
         while(temp != null) {
@@ -94,5 +95,15 @@ public class LinkedList {
             temp = temp.getNext();
         }
         System.out.println();
+    }
+
+    // Middle of a linked list
+    public int middleNode() {
+        Node fast = head, slow = head;
+        while(fast != null && fast.getNext() != null) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+        }
+        return slow.getValue();
     }
 }

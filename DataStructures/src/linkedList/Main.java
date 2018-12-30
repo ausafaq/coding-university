@@ -11,8 +11,6 @@ public class Main {
 
         list.traverseList();
 
-        list.deleteAtIndex(1);
-
-        list.traverseList();
+        System.out.println(list.middleNode());
     }
 }
