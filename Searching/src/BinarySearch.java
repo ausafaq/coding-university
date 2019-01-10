@@ -7,6 +7,7 @@ public class BinarySearch {
         if (end < start) {
             return -1;
         }
+
         if (element == input[mid]) {
             return mid;
         } else if (element < input[mid]) {
