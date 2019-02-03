@@ -6,6 +6,7 @@ public class QuickSort {
         }
 
         int pivotIndex = partition(input, start, end);
+        System.out.println(pivotIndex);
 
         quickSort(input, start, pivotIndex);
         quickSort(input, pivotIndex + 1, end);
