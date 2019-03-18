@@ -9,12 +9,14 @@ public class DecimalToHex {
         while (num != 0) {
             char c = map[num & 15];
             hexNum.append(c);
+            System.out.println("Hellow!");
             num = (num >>> 4);
         }
         return hexNum.reverse().toString();
     }
 
     public static void main(String[] args) {
+
         System.out.println(toHex(-1));
     }
 }
