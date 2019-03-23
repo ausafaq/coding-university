@@ -69,8 +69,23 @@ public class BinaryTree {
                 return true;
             }
         }
-
         return false;
+    }
+
+    // Maximum Depth
+    public int MaxDepth(Node root) {
+        return maxDepthHelper(root);
+    }
+
+    // Maximum Depth Helper
+    private int maxDepthHelper(Node node) {
+        if(node == null) {
+            return 0;
+        }
+        int leftDepth = maxDepthHelper(node.left);
+        int rightDepth = maxDepthHelper(node.right);
+        int maxDepth = Math.max(leftDepth, rightDepth) + 1;
+        return maxDepth;
     }
 
 }
