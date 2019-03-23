@@ -1,5 +1,3 @@
-import java.sql.SQLOutput;
-
 public class MaximumSubArray {
 
     public static int maxSubArray(int[] nums) {
