@@ -106,4 +106,6 @@ public class LinkedList {
         }
         return slow.getValue();
     }
+
+   Map
 }
