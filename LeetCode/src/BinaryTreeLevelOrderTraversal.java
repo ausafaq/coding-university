@@ -48,5 +48,4 @@ public class BinaryTreeLevelOrderTraversal {
             return result;
         }
     }
-
 }

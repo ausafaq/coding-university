@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class NaryTreeLevelOrderTraversal {
 
@@ -7,13 +8,14 @@ public class NaryTreeLevelOrderTraversal {
 
         public Node() {}
 
-        public Node(int _val,List<Node> _children) {
+        public Node(int _val, List<Node> _children) {
             val = _val;
             children = _children;
         }
     }
 
     class Solution {
+
         public List<List<Integer>> levelOrder(Node root) {
 
             if(root == null) {
@@ -22,21 +24,21 @@ public class NaryTreeLevelOrderTraversal {
 
             List<List<Integer>> result = new ArrayList<>();
 
-            Queue<Node> q = new LinkedList<>();
-            q.add(root);
+            Queue<Node> queue = new LinkedList<>();
+            queue.add(root);
 
-            while(!q.isEmpty()) {
-                int level = q.size();
+            while(!queue.isEmpty()) {
+                int level = queue.size();
 
                 List<Integer> currentLevel = new ArrayList<>(level);
                 for(int i = 0; i < level; i++) {
-                    Node currentNode = q.poll();
+                    Node currentNode = queue.poll();
                     currentLevel.add(currentNode.val);
 
                     if(!currentNode.children.isEmpty()) {
                         List<Node> children = currentNode.children;
                         for(Node child : children) {
-                            q.add(child);
+                            queue.add(child);
                         }
 
                     }
