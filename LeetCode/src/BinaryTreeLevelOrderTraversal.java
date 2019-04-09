@@ -48,4 +48,8 @@ public class BinaryTreeLevelOrderTraversal {
             return result;
         }
     }
+
+    public static void main(String args) {
+
+    }
 }
