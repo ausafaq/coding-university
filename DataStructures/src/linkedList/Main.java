@@ -15,6 +15,6 @@ public class Main {
         lst.addAtTail(6);
         lst.addAtTail(7);
 
-        lst.abracadabra();
+
     }
 }
