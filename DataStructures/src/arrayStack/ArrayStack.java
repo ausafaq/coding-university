@@ -40,6 +40,7 @@ public class ArrayStack {
     }
 
     public boolean isEmpty() {
+
         return top == -1;
     }
 

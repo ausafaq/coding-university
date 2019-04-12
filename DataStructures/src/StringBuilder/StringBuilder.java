@@ -8,6 +8,7 @@ public class StringBuilder {
     private List<Character> characterBuffer;
 
     public StringBuilder() {
+
         characterBuffer = new ArrayList<Character>();
     }
 

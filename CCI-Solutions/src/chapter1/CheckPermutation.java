@@ -17,6 +17,7 @@ public class CheckPermutation {
     }
 
     public static void main(String[] args) {
+
         System.out.println(permutation("eat", "tea"));
     }
 }

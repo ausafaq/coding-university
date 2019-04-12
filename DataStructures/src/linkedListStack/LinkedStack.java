@@ -6,6 +6,7 @@ public class LinkedStack {
     private StackNode top;
 
     public boolean isEmpty(){
+
         return top == null;
     }
 

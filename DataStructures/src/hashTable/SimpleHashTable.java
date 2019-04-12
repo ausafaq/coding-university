@@ -7,11 +7,13 @@ public class SimpleHashTable {
 
     // Constructor
     public SimpleHashTable() {
+
         hashTable = new HashNode[10];
     }
 
     //Hashing function
     private int hashKey(String key) {
+
         return key.length() % hashTable.length;
     }
 

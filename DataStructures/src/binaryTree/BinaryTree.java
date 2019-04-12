@@ -5,14 +5,17 @@ public class BinaryTree {
     Node root;
 
     public BinaryTree() {
+
         root = null;
     }
 
     public boolean isEmpty() {
+
         return root == null;
     }
 
     public void insert(int data) {
+
         root = insertHelper(root, data);
     }
 
@@ -30,6 +33,7 @@ public class BinaryTree {
     }
 
     public int countNodes() {
+
         return countHelper(root);
     }
 
@@ -46,6 +50,7 @@ public class BinaryTree {
     }
 
     public boolean search(int data) {
+
         return searchHelper(root, data);
     }
 

@@ -42,6 +42,7 @@ public class LinkedQueue {
     }
 
     public boolean isEmpty() {
+
         return first == null;
     }
 

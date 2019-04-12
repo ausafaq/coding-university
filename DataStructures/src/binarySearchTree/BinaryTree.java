@@ -9,6 +9,7 @@ public class BinaryTree {
 
     //Insert node
     public void insert(int data) {
+
         root = insertHelper(root, data);
     }
 
@@ -27,6 +28,7 @@ public class BinaryTree {
 
     //Inorder Traversal
     public void inorderTraversal() {
+
         inorderTraversalHelper(root);
     }
 
@@ -40,6 +42,7 @@ public class BinaryTree {
 
     //PreOrder Traversal
     public void preOrderTraversal() {
+
         preOrderTraversalHelper(root);
     }
 

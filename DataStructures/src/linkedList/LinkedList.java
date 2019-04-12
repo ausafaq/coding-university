@@ -7,11 +7,13 @@ public class LinkedList {
 
     // Check whether list is empty
     public boolean isEmpty() {
+
         return length == 0;
     }
 
     // Size of the linked list
     public int size() {
+
         return length;
     }
 
@@ -43,6 +45,7 @@ public class LinkedList {
 
     // Insert an element at the beginning of the linked list
     public void addAtHead(int value) {
+
         addAtIndex(0, value);
     }
 

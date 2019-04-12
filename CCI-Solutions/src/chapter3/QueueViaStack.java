@@ -12,10 +12,12 @@ public class QueueViaStack {
     }
 
     public int size(){
+
         return stackNewest.size() + stackOldest.size();
     }
 
     public void add(int value){
+
         stackNewest.push(value);
     }
 

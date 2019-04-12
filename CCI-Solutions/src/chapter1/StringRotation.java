@@ -15,6 +15,7 @@ public class StringRotation {
     }
 
     public static void main(String[] args) {
+
         System.out.println(isRotation("waterbottle", "erbottlewat"));
     }
 }
