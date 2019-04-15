@@ -1,4 +1,4 @@
-public class Question258 {
+public class AddDigits {
 
     public static int addDigits(int num) {
 
