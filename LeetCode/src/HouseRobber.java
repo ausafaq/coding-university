@@ -1,4 +1,4 @@
-public class Question198 {
+public class HouseRobber {
 
     public static int rob(int[] nums) {
 
