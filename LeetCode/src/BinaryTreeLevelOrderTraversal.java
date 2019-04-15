@@ -8,6 +8,7 @@ public class BinaryTreeLevelOrderTraversal {
         TreeNode left;
         TreeNode right;
         TreeNode(int val) {
+
             this.val = val;
         }
     }

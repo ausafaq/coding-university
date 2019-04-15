@@ -1,4 +1,4 @@
-class Question33 {
+class SearchInRotatedSortedArray {
     int[] nums;
     int target;
 
