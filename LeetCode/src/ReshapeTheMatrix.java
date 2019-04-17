@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Question566 {
+public class ReshapeTheMatrix {
 
     public static int[][] matrixReshape(int[][] nums, int r, int c) {
 

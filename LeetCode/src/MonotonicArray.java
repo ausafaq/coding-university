@@ -1,4 +1,4 @@
-public class Question896 {
+public class MonotonicArray {
 
     public static boolean isMonotonic(int[] A) {
 

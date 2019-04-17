@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Question888 {
+public class FairCandySwap {
 
     public static int[] fairCandySwap(int[] A, int[] B) {
 

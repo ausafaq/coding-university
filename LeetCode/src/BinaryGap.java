@@ -1,4 +1,4 @@
-public class Question868 {
+public class BinaryGap {
 
     public static int binaryGap(int N) {
         String bin = helper(N);

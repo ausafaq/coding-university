@@ -1,4 +1,4 @@
-public class Question922 {
+public class SortArrayByParity {
 
     public static int[] sortArrayByParityII(int[] A) {
 

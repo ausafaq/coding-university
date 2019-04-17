@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Question766 {
+public class ToeplitzMatrix {
 
     public static boolean isToeplitzMatrix(int[][] matrix) {
         int m = matrix.length, n = matrix[0].length;
