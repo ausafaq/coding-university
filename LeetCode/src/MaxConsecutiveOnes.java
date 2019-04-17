@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Question485 {
+public class MaxConsecutiveOnes {
 
     public static int findMaxConsecutiveOnes(int[] nums) {
 

@@ -1,4 +1,4 @@
-public class Question283 {
+public class MoveZeroes {
 
     public void moveZeroes(int[] num) {
 

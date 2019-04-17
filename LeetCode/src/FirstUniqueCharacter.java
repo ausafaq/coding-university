@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Question387 {
+public class FirstUniqueCharacter {
 
     public static int firstUniqChar(String s) {
 
