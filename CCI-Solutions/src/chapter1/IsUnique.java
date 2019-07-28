@@ -16,14 +16,14 @@ public class IsUnique {
                 return false;
             }
 
-            charSet[val] = false;
+            charSet[val] = true;
         }
         return true;
     }
 
     public static void main(String[] args) {
 
-        String str = "Helo";
+        String str = "Hello";
 
         System.out.println(uniqueString(str));
     }
