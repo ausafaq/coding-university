@@ -1,20 +1,22 @@
 package chapter1;
+import java.util.Arrays;
 
 public class URLify {
 
-    public void replaceSpaces(String s) {
-        int n = s.length();
+    public static String replaceSpaces(String s) {
 
-        int spaceCount = 0;
-
-        char[] strArr = s.toCharArray();
-
-        for(int i =0; i < n; i++) {
-            if(strArr[i] == ' ') {
-                spaceCount++;
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == ' ') {
+                sb.append("%20");
+            } else {
+                sb.append(s.charAt(i));
             }
         }
+        return sb.toString();
+    }
 
-
+    public static void main(String[] args) {
+        System.out.println(replaceSpaces("Mr John Smith"));
     }
 }
