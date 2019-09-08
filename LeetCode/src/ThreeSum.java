@@ -7,38 +7,37 @@ public class ThreeSum {
             return Collections.emptyList();
         }
 
-        List<List<Integer>> threeSums = new ArrayList<>();
         Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+
         for(int i = 0; i < nums.length - 2; i++) {
+            int j = i + 1;
+            int k = nums.length - 1;
             if(i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
 
-            if(nums[i] + nums[i + 1] + nums[i + 2] > 0) {
-                break;
-            }
-
-            int twoTarget = -nums[i];
-            int p = i + 1;
-            int q = nums.length - 1;
-
-            while(p < q) {
-                if(nums[p] + nums[q] == twoTarget) {
-                    threeSums.add(Arrays.asList(nums[i], nums[p++], nums[q--]));
-                    while (p < q && nums[p] == nums[p - 1]) {
-                        p++;
-                    }
-                    while (p < q && nums[q] == nums[q + 1]) {
-                        q--;
-                    }
-                } else if(nums[p] + nums[q] < twoTarget) {
-                    p++;
+            while(j < k) {
+                if(k < nums.length - 1 && nums[k] == nums[k + 1]) {
+                    k--;
+                    continue;
+                }
+                if(nums[i] + nums[j] + nums[k] > 0) {
+                    k--;
+                } else if(nums[i] + nums[j] + nums[k] < 0) {
+                    j++;
                 } else {
-                    q--;
+                    List<Integer> list = new ArrayList<>();
+                    list.add(nums[i]);
+                    list.add(nums[j]);
+                    list.add(nums[k]);
+                    result.add(list);
+                    j++;
+                    k--;
                 }
             }
         }
-        return threeSums;
+        return result;
     }
 
     public static void main(String[] args) {
