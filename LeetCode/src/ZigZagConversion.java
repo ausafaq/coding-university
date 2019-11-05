@@ -9,19 +9,19 @@ public class ZigZagConversion {
         }
 
         List<StringBuilder> rows = new ArrayList<>();
-        for(int i = 0; i < Math.min(s.length(), numRows); i++) {
+        for(int i = 0; i < Math.min(numRows, s.length()); i++) {
             rows.add(new StringBuilder());
         }
 
-        int curRow = 0;
-        boolean goingDown = false;
+        int currRow = 0;
+        Boolean goingDown = false;
 
         for(char c : s.toCharArray()) {
-            rows.get(curRow).append(c);
-            if(curRow == numRows - 1 || curRow == 0) {
+            rows.get(currRow).append(c);
+            if(currRow == 0 || currRow == numRows - 1) {
                 goingDown = !goingDown;
             }
-            curRow += goingDown ? 1 : -1;
+            currRow += goingDown ? 1 : -1;
         }
 
         StringBuilder result = new StringBuilder();
@@ -30,9 +30,11 @@ public class ZigZagConversion {
         }
 
         return result.toString();
+
     }
 
     public static void main(String[] args) {
+
         System.out.println(convert("PAYPALISHIRING", 3));
     }
 }
