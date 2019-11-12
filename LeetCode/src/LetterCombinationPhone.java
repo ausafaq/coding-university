@@ -22,6 +22,7 @@ public class LetterCombinationPhone {
             for(char c : mapping[digits.charAt(index) - '0'].toCharArray()) {
                 sb.append(c);
                 backtrack(digits, sb, index + 1);
+                sb.deleteCharAt(sb.length() - 1);
             }
         }
     }
