@@ -78,7 +78,8 @@ public class BinaryTree {
     }
 
     // Maximum Depth
-    public int MaxDepth(Node root) {
+    public int MaxDepth(Node root)
+    {
         return maxDepthHelper(root);
     }
 
