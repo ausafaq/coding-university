@@ -24,7 +24,7 @@ public class CriticalConnections {
         discoveredTime = new int[n];
         visited = new boolean[n];
         result = new ArrayList<>();
-        network = new ArrayList<>();
+        network = new ;
 
         for(int i = 0; i < n; i++) {
             network[i]= new ArrayList<>();
