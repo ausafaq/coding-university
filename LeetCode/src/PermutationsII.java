@@ -6,15 +6,15 @@ public class PermutationsII {
 
     public static List<List<Integer>> permuteUnique(int[] nums) {
         Arrays.sort(nums);
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        List<Integer> list = new ArrayList<Integer>();
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         boolean[] visited = new boolean[nums.length];
         helper(nums, list, visited, result);
         return result;
     }
 
     private static void helper(int[] nums, List<Integer> list, boolean[] visited, List<List<Integer>> result) {
-        if(nums.length == list.size()) {
+        if(list.size() == nums.length) {
             result.add(new ArrayList<>(list));
         } else {
             for(int i = 0; i < nums.length; i++) {
@@ -27,8 +27,8 @@ public class PermutationsII {
                     visited[i] = true;
                     list.add(nums[i]);
                     helper(nums, list, visited, result);
-                    visited[i] = false;
                     list.remove(list.size() - 1);
+                    visited[i] = false;
                 }
             }
         }
