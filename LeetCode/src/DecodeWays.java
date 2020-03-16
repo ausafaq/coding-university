@@ -17,7 +17,7 @@ public class DecodeWays {
             return 1;
         }
 
-        if(s.charAt(1) == '0') {
+        if(s.charAt(index) == '0') {
             return 0;
         }
 
@@ -29,8 +29,8 @@ public class DecodeWays {
             return memo.get(index);
         }
 
-        int ans = helper(s, index + 1);
-        if(Integer.parseInt(s.substring(index, index + 2)) <= 26) {
+        int ans = helper(s, index + 1); // for single digit
+        if(Integer.parseInt(s.substring(index, index + 2)) <= 26) { // for double digit
             ans += helper(s, index + 2);
         }
 
