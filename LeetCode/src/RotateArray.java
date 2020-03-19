@@ -50,7 +50,5 @@ public class RotateArray {
         rotate(testInput2, 10);
         rotate(testInput2, 100);
         rotate(testInput2, 1000);
-
-
     }
 }
