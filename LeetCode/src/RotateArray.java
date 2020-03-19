@@ -1,33 +1,31 @@
+import java.util.Arrays;
+
 public class RotateArray {
 
-    public static void rotateArray(int[] input, int k) {
-
-        rotateHelper(input, k);
-        for (int num : input) {
-            System.out.print(num + " ");
+    // Rotate an Array by k Steps
+    // Time Complexity: O(n) | Space Complexity: O(1)
+    public static void rotate(int[] nums, int k) {
+        // if input is invalid
+        if(nums == null || nums.length == 0) {
+            throw new RuntimeException("Invalid input");
         }
-    }
 
-    private static void rotateHelper(int[] input, int k) {
+        int[] input = nums.clone(); // cloning to preserve the original array
+
+
+        // if k is negative
+        if (k < 0) {
+            throw new RuntimeException("Value of K is negative");
+        }
 
         int len = input.length;
-        if (k < 0)
-            throw new IllegalArgumentException();
+        k = (k > len) ? k % len : k; // handles large value of k, when k > len
+        reverse(input, 0, len - k - 1);
+        reverse(input, len - k, len - 1);
+        reverse(input, 0, len - 1);
 
-        if (k <= len) {
-            reverse(input, 0, len - k - 1);
-            reverse(input, len - k, len - 1);
-            reverse(input, 0, len - 1);
-        } else {
-            while (k > len) {
-                k = k - len;
-            }
-            //System.out.println(k);
-            reverse(input, 0, len - k - 1);
-            reverse(input, len - k, len - 1);
-            reverse(input, 0, len - 1);
-        }
-
+        // Printing the rotated array
+        System.out.println(Arrays.toString(input));
     }
 
     private static void reverse(int[] input, int start, int end) {
@@ -42,8 +40,17 @@ public class RotateArray {
     }
 
     public static void main(String[] args) {
-        int[] input = {1, 2, 3, 4, 5, 6};
+//        int[] testInput1 = {};
+//        rotate(null, 3); // Runtime exception invalid input
+//        rotate(testInput1, 3); // Runtime exception for empty input
 
-        rotateArray(input, 1000);
+        int[] testInput2 = {1, 2, 3, 4, 5, 6, 7};
+//        rotate(testInput2, -3); // Runtime exception for negative k
+        rotate(testInput2, 3);
+        rotate(testInput2, 10);
+        rotate(testInput2, 100);
+        rotate(testInput2, 1000);
+
+
     }
 }
