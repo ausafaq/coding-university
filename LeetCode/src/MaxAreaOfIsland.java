@@ -1,5 +1,7 @@
 public class MaxAreaOfIsland {
 
+    // Maximum Area of an Island
+    // Time Complexity: O(R * C) | Space Complexity: O(R * C), where R, C are rows, columns of grid respectively
     public static int maxAreaOfIsland(int[][] grid) {
 
         // Check edge-cases: Null and Empty Grid
