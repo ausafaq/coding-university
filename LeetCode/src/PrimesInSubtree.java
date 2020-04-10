@@ -2,7 +2,7 @@ import java.util.*;
 
 public class PrimesInSubtree {
 
-    //Tree creation
+    //TreeNode creation
     public static Map<Integer, List<Integer>> createTree(List<Integer> first, List<Integer> second) {
         //create map
         Map<Integer, List<Integer>> nodeChildren = new HashMap<>();
