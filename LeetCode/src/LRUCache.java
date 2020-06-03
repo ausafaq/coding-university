@@ -2,100 +2,92 @@ import java.util.*;
 
 public class LRUCache {
 
-    private class ListNode {
+    class DLinkedNode {
         int key;
         int value;
-        ListNode prev;
-        ListNode next;
+        DLinkedNode prev;
+        DLinkedNode next;
     }
 
-    // Hashtable backs up the Doubly Linked List for O(1) access to cache items
-    Map<Integer, ListNode> hashtable = new HashMap<Integer, ListNode>();
+    private void addNode(DLinkedNode node) {
+        /**
+         * Always add the new node right after head
+         */
+        node.prev = head;
+        node.next = head.next;
+        head.next.prev = node;
+        head.next = node;
+    }
 
-    ListNode head;
-    ListNode tail;
-    int totalItemsInCache;
-    int maxCapacity;
+    private void removeNode(DLinkedNode node) {
+        /**
+         * Remove an exiting node from the linked list
+         */
+        DLinkedNode prev = node.prev;
+        DLinkedNode next = node.next;
+        prev.next = next;
+        next.prev = prev;
+    }
 
-    public LRUCache(int maxCapacity) {
-        // Cache starts empty and capacity is set by client
-        int totalItemsInCache = 0;
-        this.maxCapacity = maxCapacity;
+    private void moveToHead(DLinkedNode node) {
+        /**
+         * Move certain node in between to the head
+         */
+        removeNode(node);
+        addNode(node);
+    }
 
-        // Dummy head and tail nodes to avoid empty state
-        head = new ListNode();
-        tail = new ListNode();
+    private DLinkedNode popTail() {
+        /**
+         * Pop the current tail
+         */
+        DLinkedNode result = tail.prev;
+        removeNode(result);
+        return result;
+    }
 
-        // Wire the head and tail together
+    private Map<Integer, DLinkedNode> cache = new HashMap<>();
+    private int size;
+    private int capacity;
+    private DLinkedNode head, tail;
+
+    public LRUCache(int capacity) {
+        this.size = 0;
+        this.capacity = capacity;
+        head = new DLinkedNode();
+        tail = new DLinkedNode();
         head.next = tail;
         tail.prev = head;
     }
 
     public int get(int key) {
-        ListNode node = hashtable.get(key);
-
-        if(node == null) {
-            return -1;
-        }
+        DLinkedNode node = cache.get(key);
+        if(node == null) return -1;
         moveToHead(node);
         return node.value;
     }
 
-
     public void put(int key, int value) {
-        ListNode node = hashtable.get(key);
-
+        DLinkedNode node = cache.get(key);
         if(node == null) {
-            // Item not found, create new entry
-            ListNode newNode = new ListNode();
+            DLinkedNode newNode = new DLinkedNode();
             newNode.key = key;
             newNode.value = value;
+            cache.put(key, newNode);
+            addNode(newNode);
+            size++;
 
-            // Add to the hashtable and update the list
-            hashtable.put(key, newNode);
-            addToFront(newNode);
-            totalItemsInCache++;
-
-            // If over capacity, remove the item
-            if(totalItemsInCache > maxCapacity) {
-                removeLRUEntry();
+            if(size > capacity) {
+                // pop the tail
+                DLinkedNode tail = popTail();
+                cache.remove(tail.key);
+                size--;
             }
         } else {
+            // update the value
             node.value = value;
             moveToHead(node);
         }
     }
 
-    private void moveToHead(ListNode node) {
-        removeFromList(node);
-        addToFront(node);
-    }
-
-    private void addToFront(ListNode node) {
-        node.prev = head;
-        node.next = head.next;
-
-        head.next.prev = node;
-        head.next = node;
-    }
-
-    private void removeFromList(ListNode node) {
-        ListNode savedPrev = node.prev;
-        ListNode savedNext = node.next;
-
-        savedPrev.next = savedNext;
-        savedNext.prev = savedPrev;
-    }
-
-    private void removeLRUEntry() {
-        ListNode tail = popTail();
-        hashtable.remove(tail.key);
-        totalItemsInCache -= 1;
-    }
-
-    private ListNode popTail() {
-        ListNode tailItem = tail.prev;
-        removeFromList(tailItem);
-        return tailItem;
-    }
 }

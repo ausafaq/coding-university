@@ -1,4 +1,4 @@
-package StringManipulation.Medium.Easy;
+package StringManipulation.Easy;
 
 public class ReverseAString {
 

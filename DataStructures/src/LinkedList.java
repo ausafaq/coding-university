@@ -1,6 +1,13 @@
-package linkedList;
-
 public class LinkedList {
+
+    class Node {
+        int val;
+        Node next;
+
+        Node(int val) {
+            this.val = val;
+        }
+    }
 
     private Node head;
     private int length = 0;
@@ -28,10 +35,10 @@ public class LinkedList {
             return head;
         }
 
-        Node temp = head.getNext();
+        Node temp = head.next;
         int idx = 1;
         while (idx < index) {
-            temp = temp.getNext();
+            temp = temp.next;
             idx++;
         }
         return temp;
@@ -40,7 +47,7 @@ public class LinkedList {
 
     public int get(int index) {
         Node result = findAtIndex(index);
-        return result != null ? result.getValue() : -1;
+        return result != null ? result.val : -1;
     }
 
     // Insert an element at the beginning of the linked list
@@ -54,17 +61,18 @@ public class LinkedList {
         if (index > length) {
             return;
         }
+
         Node newNode = new Node(value);
         Node nodeAtIndex = findAtIndex(index - 1);
 
         if (isEmpty()) {
             head = newNode;
         } else if (index == 0) {
-            newNode.setNext(head);
+            newNode.next = head;
             head = newNode;
         } else {
-            newNode.setNext(nodeAtIndex.getNext());
-            nodeAtIndex.setNext(newNode);
+            newNode.next = nodeAtIndex.next;
+            nodeAtIndex.next = newNode;
         }
         length++;
     }
@@ -82,10 +90,10 @@ public class LinkedList {
         }
 
         if(index == 0) {
-            head = head.getNext();
+            head = head.next;
         } else {
             Node nodeAtIndex = findAtIndex(index - 1);
-            nodeAtIndex.setNext(nodeAtIndex.getNext().getNext());
+            nodeAtIndex.next = nodeAtIndex.next.next;
         }
         length--;
     }
@@ -94,8 +102,8 @@ public class LinkedList {
     public void traverseList() {
         Node temp = head;
         while(temp != null) {
-            System.out.print(temp.getValue() + " ");
-            temp = temp.getNext();
+            System.out.print(temp.val + " ");
+            temp = temp.next;
         }
         System.out.println();
     }
@@ -103,11 +111,29 @@ public class LinkedList {
     // Middle of a linked list
     public int middleNode() {
         Node fast = head, slow = head;
-        while(fast != null && fast.getNext() != null) {
-            slow = slow.getNext();
-            fast = fast.getNext().getNext();
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        return slow.getValue();
+        return slow.val;
+    }
+
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.addAtHead(1);
+        list.addAtTail(2);
+        list.addAtTail(2);
+        list.addAtTail(3);
+        list.addAtTail(4);
+        list.addAtTail(5);
+        list.addAtTail(5);
+        list.addAtTail(6);
+        list.addAtTail(7);
+        list.traverseList();
+        System.out.println("Middle Node: " +list.middleNode());
+        System.out.println("Element at index 2: " +list.get(2));
+        System.out.println(list.isEmpty());
+
     }
 
 }
