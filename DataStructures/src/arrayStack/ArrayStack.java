@@ -13,9 +13,9 @@ public class ArrayStack {
     }
 
     public void push(int value) {
-        if (top == stack.length) {
-            // need to resize the backing array
-            int[] newStack = new int[2 * stack.length];
+        if(top == stack.length) {
+            // need to resize the array
+            int[] newStack = new int[2*stack.length];
             System.arraycopy(stack, 0, newStack, 0, stack.length);
             stack = newStack;
         } else {
@@ -24,29 +24,43 @@ public class ArrayStack {
     }
 
     public int pop() {
-        if (isEmpty()) {
+        if(isEmpty()) {
             throw new EmptyStackException();
         } else {
             return stack[top--];
         }
     }
 
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
     public int peek() {
-        if (isEmpty()) {
+        if(isEmpty()) {
             throw new EmptyStackException();
         } else {
             return stack[top];
         }
     }
 
-    public boolean isEmpty() {
-
-        return top == -1;
+    public void printStack(){
+        for(int i = top; i > -1; i--) {
+            System.out.println(stack[i] + ",");
+        }
     }
 
-    public void printStack(){
-        for(int i = top; i > -1; i--){
-            System.out.print(stack[i] + ",");
-        }
+    public static void main(String[] args) {
+        ArrayStack myStack = new ArrayStack(10);
+
+        myStack.push(10);
+        myStack.push(20);
+        myStack.push(5);
+        myStack.push(17);
+        myStack.push(80);
+
+        myStack.printStack();
+
+        System.out.println("\nTop Element: " + myStack.peek());
+        System.out.println("\nPopped element: " + myStack.pop());
     }
 }
