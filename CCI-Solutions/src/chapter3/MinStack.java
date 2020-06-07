@@ -11,8 +11,8 @@ public class MinStack {
         int min;
         StackNode next;
 
-        public StackNode(int x, int min) {
-            this.value = x;
+        public StackNode(int value, int min) {
+            this.value = value;
             this.min = min;
         }
     }
@@ -20,15 +20,13 @@ public class MinStack {
     StackNode top;
 
     public void push(int x) {
-        if (top == null) {
+        if(top == null) {
             StackNode newNode = new StackNode(x, x);
             top = newNode;
         } else {
             StackNode newNode = new StackNode(x, Math.min(x, top.min));
-
             newNode.next = top;
             top = newNode;
-
         }
     }
 
@@ -37,7 +35,7 @@ public class MinStack {
     }
 
     public int top() {
-        if (top != null) {
+        if(top != null) {
             return top.value;
         }
         return -1;

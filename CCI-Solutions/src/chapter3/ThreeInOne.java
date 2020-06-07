@@ -6,14 +6,16 @@ package chapter3;
 
 public class ThreeInOne {
 
+    private int numberOfStacks = 3;
     private int capacity;
     private int[] values;
     private int[] sizes;
 
+
     public ThreeInOne(int capacity) {
         this.capacity = capacity;
-        values = new int[3 * capacity];
-        sizes = new int[3];
+        values = new int[capacity * numberOfStacks];
+        sizes = new int[numberOfStacks];
     }
 
     // push value into stack

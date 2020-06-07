@@ -1,48 +1,50 @@
 package chapter3;
 
-import java.util.*;
+import java.util.EmptyStackException;
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
 
 // Stack of Plates
 
 public class StackOfPlates {
 
-    List<Stack> setOfStacks = new ArrayList<Stack>();
-    public int capacity;
+    private List<Stack> stacks;
+    private int capacity;
 
     public StackOfPlates(int capacity) {
+        stacks = new ArrayList<>();
         this.capacity = capacity;
     }
 
     public Stack getLastStack() {
-        if (setOfStacks.size() == 0) {
+        if(stacks.size() == 0) {
             return null;
         } else {
-            return setOfStacks.get(setOfStacks.size() - 1);
+            return stacks.get(stacks.size() - 1);
         }
     }
 
     public void push(int value) {
         Stack last = getLastStack();
-        if (last != null && last.size() != capacity) {
+        if(last != null && last.size() != capacity) {
             last.push(value);
         } else {
-            // create new stack
-            Stack newStack = new Stack();
+            Stack newStack = new Stack<>();
             newStack.push(value);
-            setOfStacks.add(newStack);
+            stacks.add(newStack);
         }
     }
 
     public int pop() {
         Stack last = getLastStack();
-        if (last == null) {
+        if(last == null) {
             throw new EmptyStackException();
         } else {
             int poppedValue = (int) last.pop();
-            if (last.size() == 0) {
-                setOfStacks.remove(setOfStacks.size() - 1);
-            }
+            if(last.size() == 0) stacks.remove(stacks.size() - 1);
             return poppedValue;
         }
     }
+
 }

@@ -2,41 +2,38 @@ package chapter3;
 import java.util.Stack;
 
 // Queues via Stack
+public class QueueViaStack<T> {
+    Stack<T> oldStack, newStack;
 
-public class QueueViaStack {
-    Stack<Integer> stackNewest, stackOldest;
-
-    public QueueViaStack(){
-        stackNewest = new Stack<Integer>();
-        stackOldest = new Stack<Integer>();
+    public QueueViaStack() {
+        oldStack = new Stack<T>();
+        newStack = new Stack<T>();
     }
 
-    public int size(){
-
-        return stackNewest.size() + stackOldest.size();
+    public int size() {
+        return newStack.size() + oldStack.size();
     }
 
-    public void add(int value){
-
-        stackNewest.push(value);
+    public void add(T value) {
+        newStack.push(value);
     }
 
-    private void shiftOfStack(){
-        if(stackOldest.isEmpty()){
-            while(!stackNewest.isEmpty()){
-                stackOldest.push(stackNewest.pop());
+    private void shiftOfStack() {
+        if (oldStack.isEmpty()) {
+            while (!newStack.isEmpty()) {
+                oldStack.push(newStack.pop());
             }
         }
     }
 
-    public int remove(){
+    public T remove() {
         shiftOfStack();
-        return stackOldest.pop();
+        return oldStack.pop();
     }
 
-    public int peek(){
+    public T peek() {
         shiftOfStack();
-        return stackOldest.peek();
+        return oldStack.peek();
     }
 }
 
