@@ -1,55 +1,125 @@
 package hashTable;
 
-public class SimpleHashTable {
+public class SimpleHashTable<K, V> {
 
-    private HashNode[] hashTable;
+    class Entry<K, V> {
+        K key;
+        V value;
+        Entry next;
+    }
+
+    private Entry[] buckets;
     private int size;
 
     // Constructor
-    public SimpleHashTable() {
-
-        hashTable = new HashNode[10];
+    public SimpleHashTable(int capacity) {
+        buckets = new Entry[capacity];
+        size = 0;
     }
 
-    //Hashing function
-    private int hashKey(String key) {
-
-        return key.length() % hashTable.length;
+    private int hashFunction(int hashCode) {
+        int index = hashCode;
+        if(index < 0) index = -index;
+        return index % buckets.length;
     }
 
     // Add a node
-    public void put(String key, HashNode node) {
-        int hashedKey = hashKey(key);
-        if(hashTable[hashedKey] != null) {
-            System.out.println("Sorry, there's already a node at position " +hashedKey);
-        } else {
-            hashTable[hashedKey] = node;
-            size++;
+    public boolean put(K key, V value) {
+
+        int index = hashFunction(key.hashCode());
+        Entry current = buckets[index];
+        while(current != null) {
+            if(current.key.equals(key)) {
+                return false;
+            }
+            current = current.next;
         }
+        Entry entry = new Entry();
+        entry.key = key;
+        entry.value = value;
+        entry.next = buckets[index];
+        buckets[index] = entry;
+        size++;
+
+        return true;
     }
 
     // Remove a node
-    public void remove(String key) {
-        int hashedKey = hashKey(key);
-        hashTable[hashedKey] = null;
+    public boolean remove(K key) {
+        int index = hashFunction(key.hashCode());
+        Entry current = buckets[index];
+        Entry previous = null;
+
+        while(current != null) {
+            if(current.key.equals(key)) {
+                if(previous == null) {
+                    buckets[index] = current.next;
+                } else {
+                    previous.next = current.next;
+                }
+                size--;
+                return true;
+            }
+            previous = current;
+            current = current.next;
+        }
+        return false;
+    }
+
+    // Check if contains node
+    public boolean containsKey(K key) {
+        int index = hashFunction(key.hashCode());
+        Entry current = buckets[index];
+
+        while(current != null) {
+            if(current.key.equals(key)) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
     }
 
     // Retrieve a node
-    public HashNode get(String key) {
-        int hashedKey = hashKey(key);
-        return hashTable[hashedKey];
+    public V get(K key) {
+        int index = hashFunction(key.hashCode());
+        Entry current = buckets[index];
+
+        while(current != null) {
+            if(current.key.equals(key)) {
+                V value = (V) current.value;
+                return value;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     // Printing the HashTable
-    public void printHashTable() {
-        for(int i = 0; i < hashTable.length; i++) {
-            if(hashTable[i] != null) {
-                HashNode node = hashTable[i];
-                System.out.println(node.key + " -> " + node.value);
-            } else {
-                System.out.println(hashTable[i]);
+    @Override
+    public String toString() {
+        Entry currentEntry = null;
+        StringBuilder sb = new StringBuilder();
+        for(int index = 0; index < buckets.length; index++) {
+            if(buckets[index] != null) {
+                currentEntry = buckets[index];
+
+                while(currentEntry != null) {
+                    sb.append("[" + index + "]");
+                    sb.append(" " + currentEntry.key.toString() + "->" + currentEntry.value.toString());
+                    currentEntry = currentEntry.next;
+                }
             }
         }
+        return sb.toString();
     }
 
 
