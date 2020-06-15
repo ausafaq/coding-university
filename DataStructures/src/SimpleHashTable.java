@@ -1,5 +1,3 @@
-package hashTable;
-
 public class SimpleHashTable<K, V> {
 
     class Entry<K, V> {
