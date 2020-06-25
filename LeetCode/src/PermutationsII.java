@@ -8,7 +8,7 @@ public class PermutationsII {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
-        boolean[] visited = new boolean[nums.length];
+        boolean[] visited = new boolean [nums.length];
         helper(nums, list, visited, result);
         return result;
     }
@@ -18,18 +18,21 @@ public class PermutationsII {
             result.add(new ArrayList<>(list));
         } else {
             for(int i = 0; i < nums.length; i++) {
-                if(i > 0) {
-                    if(nums[i] == nums[i-1] && !visited[i-1]) {
-                        continue;
-                    }
-                }
-                if(!visited[i]) {
-                    visited[i] = true;
-                    list.add(nums[i]);
-                    helper(nums, list, visited, result);
-                    list.remove(list.size() - 1);
-                    visited[i] = false;
-                }
+                if(i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) continue;
+
+            }
+        }
+        if(list.size() == nums.length) {
+            result.add(new ArrayList<>(list));
+        } else {
+            for(int i = 0; i < nums.length; i++) {
+                if(visited[i]) continue;
+                if(i > 0 && nums[i] == nums[i-1] && !visited[i-1]) continue;
+                visited[i] = true;
+                list.add(nums[i]);
+                helper(nums, list, visited, result);
+                list.remove(list.size() - 1);
+                visited[i] = false;
             }
         }
     }
