@@ -1,5 +1,3 @@
-package Arrays;
-
 public class IsMajorityElement {
 
     public static boolean isMajorityElement(int[] nums, int target) {
