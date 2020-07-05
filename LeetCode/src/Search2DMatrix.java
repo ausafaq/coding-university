@@ -1,5 +1,8 @@
 public class Search2DMatrix {
 
+    /*
+        O(nlogn) approach. Search row index and perform binary search
+     */
     public static boolean searchMatrix(int[][] matrix, int target) {
         if(matrix.length == 0) {
             return false;
@@ -8,15 +11,11 @@ public class Search2DMatrix {
         int totalRows = matrix.length - 1;
         int totalCols = matrix[0].length - 1;
         while(row <= totalRows) {
-            int mid = (row+totalRows) / 2;
+            int mid = row + totalRows / 2;
             if(matrix[mid][0] <= target && matrix[mid][totalCols] >= target) {
                 return searchRow(matrix, mid, target);
             }
-
-            if(matrix[mid][0] > target) {
-                totalRows = mid - 1;
-            }
-
+            if(matrix[mid][0] > target) totalRows = mid - 1;
             if(matrix[mid][totalCols] < target) {
                 row = mid + 1;
             }
@@ -25,14 +24,34 @@ public class Search2DMatrix {
     }
 
     public static boolean searchRow(int[][] matrix, int rowIdx, int target) {
-        int low = 0;
-        int high = matrix[rowIdx].length - 1;
-        while(low <= high) {
-            int mid = (low + high) / 2;
+        int left = 0;
+        int right = matrix[rowIdx].length - 1;
+        while(left <= right) {
+            int mid = left + (right - left) / 2;
             if(matrix[rowIdx][mid] < target) {
-                low = mid + 1;
+                left = mid + 1;
             } else if(matrix[rowIdx][mid] > target) {
-                high = mid - 1;
+                right = mid - 1;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    // O(N+M) approach
+    public boolean searchMatrixOptmized(int[][] matrix, int target) {
+        if(matrix.length == 0) {
+            return false;
+        }
+        int i = matrix.length - 1;
+        int j = 0;
+        while(i >= 0 && j < matrix[0].length) {
+            if(matrix[i][j] > target) {
+                i--;
+            } else if(matrix[i][j] < target) {
+                j++;
             } else {
                 return true;
             }

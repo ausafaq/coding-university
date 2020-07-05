@@ -4,10 +4,6 @@ public class MergeSort {
     public static void mergeSort(int[] input) {
         int len = input.length;
 
-        if (len < 2) {
-            return;
-        }
-
         int mid = len / 2;
 
         int[] l = new int[mid];
