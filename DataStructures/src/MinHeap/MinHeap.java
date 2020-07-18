@@ -2,8 +2,8 @@ package MinHeap;
 
 public class MinHeap {
     private int[] heap;
-    private int maxsize;
     private int size;
+    private int maxsize;
 
     private static final int FRONT = 1;
 
@@ -20,12 +20,12 @@ public class MinHeap {
 
     // Position of left child
     private int leftChild(int k) {
-        return (2*k);
+        return 2*k;
     }
 
     // Position of right child
     private int rightChild(int k) {
-        return (2*k + 1);
+        return 2*k + 1;
     }
 
     // Check if the node is leaf
@@ -45,6 +45,8 @@ public class MinHeap {
 
     // Heapify
     private void heapify(int k) {
+        // if the node is a non-leaf node and greater
+        // than any of its child
         if(!isLeaf(k)) {
             if (heap[k] > heap[leftChild(k)] || heap[k] > heap[rightChild(k)]) {
 

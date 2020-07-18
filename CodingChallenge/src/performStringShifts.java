@@ -1,5 +1,3 @@
-package leetcodeChallenge;
-
 public class performStringShifts {
 
     public static String stringShift(String s, int[][] shift) {
