@@ -1,9 +1,8 @@
-public class LinkedList {
+public class LinkedList<T> {
 
-    class Node {
+    private static class Node {
         int val;
         Node next;
-
         Node(int val) {
             this.val = val;
         }
@@ -14,19 +13,16 @@ public class LinkedList {
 
     // Check whether list is empty
     public boolean isEmpty() {
-
         return length == 0;
     }
 
     // Size of the linked list
     public int size() {
-
         return length;
     }
 
     // Find at index
     private Node findAtIndex(int index) {
-
         if (length == 0 || index > length - 1) {
             return null;
         }
@@ -52,7 +48,6 @@ public class LinkedList {
 
     // Insert an element at the beginning of the linked list
     public void addAtHead(int value) {
-
         addAtIndex(0, value);
     }
 
@@ -135,5 +130,4 @@ public class LinkedList {
         System.out.println(list.isEmpty());
 
     }
-
 }
