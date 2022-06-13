@@ -3,54 +3,74 @@ package Queue;
 import java.util.NoSuchElementException;
 
 public class LinkedQueue {
-    private QueueNode first;
-    private QueueNode last;
 
-    // Add to queue
+    static class Node {
+        private int value;
+        private Node next;
+
+        Node(int value) {
+            this.value = value;
+        }
+    }
+
+    private Node front;
+    private Node rear;
+
+    // Add to Queue.
     public void add(int value) {
-        QueueNode newNode = new QueueNode(value);
-        if (last != null) {
-            last.setNext(newNode);
+        Node newNode = new Node(value);
+        if (rear != null) {
+            rear.next = newNode;
         }
-        last = newNode;
-        if (first == null) {
-            first = last;
+        rear = newNode;
+        if (front == null) {
+            front = rear;
         }
     }
 
-    // Remove from queue
+    // Remove from Queue.
     public int remove() {
-        if (first == null) {
+        if (front == null) {
             throw new NoSuchElementException();
         } else {
-            QueueNode temp = first;
-            first = first.getNext();
-            if (first == null) {
-                last = null;
+            Node temp = front;
+            front = front.next;
+            if (front == null) {
+                rear = null;
             }
-            return temp.getValue();
+            return temp.value;
         }
     }
 
-    // Peek from queue
+    // Peek from Queue.
     public int peek() {
-        if (first == null) {
+        if (front == null) {
             throw new NoSuchElementException();
         } else {
-            return first.getValue();
+            return front.value;
         }
     }
 
     public boolean isEmpty() {
-
-        return first == null;
+        return front == null;
     }
 
-    public void printQueue() {
-        QueueNode current = first;
+    public void print() {
+        Node current = front;
         while (current != null) {
-            System.out.print(current.getValue() + ", ");
-            current = current.getNext();
+            System.out.print(current.value + ", ");
+            current = current.next;
         }
+    }
+
+    public static void main(String[] args) {
+        LinkedQueue myQueue = new LinkedQueue();
+        myQueue.add(1);
+        myQueue.add(2);
+        myQueue.add(3);
+        myQueue.print();
+
+        System.out.println("\nFirst Element: " + myQueue.peek());
+        System.out.println("\nRemoved Element: " + myQueue.remove());
     }
 }
