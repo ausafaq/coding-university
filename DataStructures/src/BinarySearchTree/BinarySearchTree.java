@@ -1,4 +1,4 @@
-package binarySearchTree;
+package BinarySearchTree;
 
 public class BinarySearchTree {
 
@@ -31,6 +31,65 @@ public class BinarySearchTree {
             node.left = insertHelper(node.left, value);
         } else {
             node.right = insertHelper(node.right, value);
+        }
+        return node;
+    }
+
+    public void delete(int value) {
+        /*
+        Three possible situations:
+        1. Leaf node
+        2. Only one child present.
+        3. Two children present.
+         */
+        root = deleteHelper(root, value);
+    }
+
+    private TreeNode deleteHelper(TreeNode node, int value) {
+         if (node == null) {
+             return null;
+         }
+         // delete from the left subtree
+         if (value < node.value) {
+             node.left = deleteHelper(node.left, value);
+             // delete from the right subtree
+         } else if (value > node.value) {
+             node.right = deleteHelper(node.right, value);
+         } else {
+             // Case 1. Node is a leaf.
+             if (node.left == null && node.right == null) {
+                 node = null;
+             }
+             // Case 2. One child present.
+             else if (node.left == null) {
+                 node = node.right;
+             } else if (node.right == null) {
+                 node = node.left;
+             }
+             // Case 3. Two children present.
+             else {
+                 TreeNode successor = successor(node);
+                 deleteHelper(node, successor.value);
+                 node.value = successor.value;
+             }
+         }
+        return node;
+    }
+
+    // Successor i.e. the next node, or the smallest node after the current one.
+    private TreeNode successor(TreeNode node) {
+        node = node.right;
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
+
+    // Predecessor i.e. the previous node, or the largest node before the current one.
+    private TreeNode predecessor(TreeNode node) {
+        node = node.left;
+        while (node.right != null) {
+            node = node.right;
         }
         return node;
     }
@@ -102,6 +161,8 @@ public class BinarySearchTree {
         myTree.preorderTraversal();
         System.out.println();
         myTree.inorderTraversal();
+
+        myTree.delete(3);
         System.out.println();
         myTree.postorderTraversal();
     }
